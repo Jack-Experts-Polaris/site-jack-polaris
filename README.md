@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jack Polaris — Website
 
-## Getting Started
+Marketing site for **Jack Polaris**, an enterprise AI governance platform. Built with Next.js (App Router), React 19 and Tailwind CSS v4, exported as a fully static site and hosted on GitHub Pages at **https://polaris.jackexperts.com**.
 
-First, run the development server:
+## Requirements
+
+- Node.js 22+
+- pnpm 10 (`corepack enable` picks up the version pinned in `package.json`)
+
+## Running locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command      | What it does                                         |
+| ------------ | ---------------------------------------------------- |
+| `pnpm dev`   | Start the dev server with hot reload                 |
+| `pnpm build` | Build the static export into `out/`                  |
+| `pnpm lint`  | Run ESLint                                           |
 
-## Learn More
+`pnpm start` does not apply: the project uses `output: "export"`, so there is no Node server in production.
 
-To learn more about Next.js, take a look at the following resources:
+## Previewing the production build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm build
+npx serve out
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment variables
 
-## Deploy on Vercel
+| Variable               | Default                        | Used for                                        |
+| ---------------------- | ------------------------------ | ----------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | `https://jackpolaris.com.br`   | Canonical URLs, Open Graph, sitemap, JSON-LD    |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The deploy workflow sets it to `https://polaris.jackexperts.com`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure
+
+```
+src/
+  app/            Routes: home, /recursos, robots, sitemap, manifest, llms.txt
+  components/     UI: home sections, animations (anim/), visual effects (fx/)
+  content.ts      All page copy (pt-BR)
+  lib/site.ts     Site metadata and URL helpers
+  lib/llms.ts     Generates llms.txt / llms-full.txt from content.ts
+public/           Static assets, CNAME for the custom domain
+```
+
+To change site text, edit `src/content.ts`.
+
+## Deployment
+
+Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the static export and publishes `out/` to GitHub Pages.
+
+One-time setup in the GitHub repository:
+
+1. **Settings → Pages → Source**: select **GitHub Actions**.
+2. **Settings → Pages → Custom domain**: `polaris.jackexperts.com` (also kept in `public/CNAME`), then enable **Enforce HTTPS**.
+3. In the DNS of `jackexperts.com`, create a `CNAME` record `polaris` → `jack-experts-polaris.github.io`.
+
+## Contributing
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), written in English (e.g. `feat: add pricing section`, `fix: correct hero spacing`).
