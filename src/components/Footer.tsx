@@ -42,6 +42,15 @@ export function Footer() {
           <p className="max-w-xs text-[14px] leading-relaxed text-fog">
             Governança de IA para empresas brasileiras. Todos os modelos, todas as regras, uma única porta.
           </p>
+          <a
+            href="https://jackexperts.com.br"
+            target="_blank"
+            rel="noopener"
+            className="mt-2 flex w-fit items-center gap-3 text-[13px] text-steel opacity-80 transition-opacity hover:opacity-100"
+          >
+            <span>by</span>
+            <Image src="/brand/jack-experts-white.png" alt="Jack Experts" width={112} height={56} />
+          </a>
         </div>
         {cols.map((c) => (
           <div key={c.title}>
@@ -58,18 +67,9 @@ export function Footer() {
           </div>
         ))}
       </Container>
-      <Container className="flex flex-col justify-between gap-2 border-t border-white/[0.04] py-6 text-[13px] text-steel sm:flex-row sm:items-center">
+      <Container className="flex flex-col justify-between gap-2 border-t border-white/[0.04] py-6 text-[13px] text-steel sm:flex-row">
         <span>© 2026 Jack Polaris. Todos os direitos reservados.</span>
         <span>Feito no Brasil · LGPD desde a concepção</span>
-        <a
-          href="https://jackexperts.com.br"
-          target="_blank"
-          rel="noopener"
-          className="flex items-center gap-2 opacity-70 transition-opacity hover:opacity-100"
-        >
-          <span>by</span>
-          <Image src="/brand/jack-experts-white.png" alt="Jack Experts" width={48} height={24} />
-        </a>
       </Container>
     </footer>
   );
