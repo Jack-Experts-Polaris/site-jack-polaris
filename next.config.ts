@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Static export served by GitHub Pages (see .github/workflows/deploy.yml).
+  output: "export",
+  images: { unoptimized: true },
+  allowedDevOrigins: ["dirceu.sysko.io"],
   turbopack: {
     rules: {
       "*.css": {
