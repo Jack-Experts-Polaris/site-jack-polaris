@@ -1,7 +1,7 @@
 export const site = {
   name: "Jack Polaris",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://jackpolaris.com.br").replace(/\/$/, ""),
-  email: "contato@jackpolaris.com.br",
+  email: "contato@jackexperts.com.br",
   locale: "pt_BR",
   title: "Jack Polaris — Plataforma de Governança de IA para empresas",
   shortDescription: "Gateway de IA corporativo com governança, LGPD, controle de custos e API compatível com OpenAI.",
@@ -32,6 +32,9 @@ export const site = {
 };
 
 export const absoluteUrl = (path = "/") => new URL(path, site.url).toString();
+
+export const mailto = (subject?: string) =>
+  `mailto:${site.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
 
 export function jsonLd(data: unknown) {
   return { __html: JSON.stringify(data).replace(/</g, "\\u003c") };

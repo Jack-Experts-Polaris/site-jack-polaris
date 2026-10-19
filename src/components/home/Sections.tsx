@@ -31,6 +31,8 @@ import { CountUp } from "@/components/anim/CountUp";
 import { Reveal, RevealItem, RevealStagger } from "@/components/anim/Reveal";
 import { faq, numbers, personas, problems, useCases } from "@/content";
 import { Badge, Button, ChevronLink, Container, SectionHeader } from "@/components/ui";
+import { ContactEmail } from "@/components/home/ContactEmail";
+import { mailto } from "@/lib/site";
 
 const icon = "size-5 text-lilac";
 const stroke = 1.5;
@@ -342,12 +344,13 @@ export function FinalCta() {
           </p>
         </Reveal>
         <Reveal delay={0.24} className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Button href="mailto:contato@jackpolaris.com.br?subject=Demonstra%C3%A7%C3%A3o">
-            Agende uma demonstração
-          </Button>
-          <Button href="mailto:vendas@jackpolaris.com.br" variant="outline">
+          <Button href={mailto("Demonstração do Jack Polaris")}>Agende uma demonstração</Button>
+          <Button href={mailto("Jack Polaris: falar com vendas")} variant="outline">
             Fale com vendas
           </Button>
+        </Reveal>
+        <Reveal delay={0.3} className="mt-6">
+          <ContactEmail />
         </Reveal>
       </Container>
       <OrbitHorizon />

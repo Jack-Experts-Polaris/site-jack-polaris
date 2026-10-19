@@ -1,6 +1,7 @@
 import { AuroraDivider } from "./fx/LightBeam";
 import Image from "next/image";
 import Link from "next/link";
+import { mailto, site } from "@/lib/site";
 import { Container, Logo } from "./ui";
 
 const cols = [
@@ -26,8 +27,9 @@ const cols = [
     title: "Contato",
     links: [
       { href: "/#contato", label: "Fale com um especialista" },
-      { href: "/#contato", label: "Agende uma demonstração" },
-      { href: "/#contato", label: "Fale com vendas" },
+      { href: mailto("Demonstração do Jack Polaris"), label: "Agende uma demonstração" },
+      { href: mailto("Jack Polaris: falar com vendas"), label: "Fale com vendas" },
+      { href: mailto(), label: site.email },
     ],
   },
 ];
