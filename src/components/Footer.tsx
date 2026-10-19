@@ -1,4 +1,5 @@
 import { AuroraDivider } from "./fx/LightBeam";
+import Image from "next/image";
 import Link from "next/link";
 import { Container, Logo } from "./ui";
 
@@ -57,9 +58,18 @@ export function Footer() {
           </div>
         ))}
       </Container>
-      <Container className="flex flex-col justify-between gap-2 border-t border-white/[0.04] py-6 text-[13px] text-steel sm:flex-row">
+      <Container className="flex flex-col justify-between gap-2 border-t border-white/[0.04] py-6 text-[13px] text-steel sm:flex-row sm:items-center">
         <span>© 2026 Jack Polaris. Todos os direitos reservados.</span>
         <span>Feito no Brasil · LGPD desde a concepção</span>
+        <a
+          href="https://jackexperts.com.br"
+          target="_blank"
+          rel="noopener"
+          className="flex items-center gap-2 opacity-70 transition-opacity hover:opacity-100"
+        >
+          <span>by</span>
+          <Image src="/brand/jack-experts-white.png" alt="Jack Experts" width={48} height={24} />
+        </a>
       </Container>
     </footer>
   );
